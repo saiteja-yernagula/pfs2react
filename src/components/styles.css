@@ -1,0 +1,59 @@
+header{
+    background:blueviolet;
+   display:flex;
+   justify-content:space-between;
+   align-items:center;
+   color:white;
+   padding:10px;
+}
+header>h1{
+    color:white;
+}
+button{
+    padding:10px;
+    margin:10px;
+}
+
+
+.s1{
+    display:flex;
+    justify-content: space-evenly;
+    align-items:center;
+}
+.s1>div>h1{
+      color:blueviolet;
+}
+img{
+    width:100%;
+    height:100%;
+}
+
+
+.doctorcontainer{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:40px;
+    padding:30px;
+}
+.card{
+    padding:20px;
+    box-shadow:0 0 3px 0px black;
+}
+
+.form-container{
+    width:50%;
+    margin:auto;
+    text-align: center;
+}
+.form-container >input, .form-container>select{
+    display:inline-block;
+    width:100%;
+    padding:20px;
+    margin:10px;
+}
+.form-container>button{
+    background:black;
+    color:white;
+    width:100%;
+    padding:10px;
+}

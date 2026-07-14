@@ -1,0 +1,38 @@
+react
+react is open source js library used for buildin single page applications
+
+features
+virtual dom---- diffing algorithm --- reconciliation
+component based architecture
+spa 
+
+props
+props are read only inputs used to pass the information from 
+parent component to child component
+
+component 
+reusable part of code used to render part of UI
+
+types of components 
+1) functional components
+hooks - built in function used to implement the react features
+
+2) class components
+life cycle methods
+
+
+
+state
+state is like a variable used to manage the dynamic nature of a 
+component or used to store the daata
+
+import useState from 'react'
+const [statename,setStatename]=useState(intial value)
+
+const [count,setCount]=useState(0)
+
+count---varaible name
+setCount---function used to change the state value
+useState -
+it is a hook in functional component that is used to manage
+the state
