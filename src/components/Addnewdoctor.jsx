@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
+import Home from './Home'
 function Addnewdoctor() {
     const [name,setName]=useState('')
     const [age,setAge]=useState('')
@@ -28,6 +29,7 @@ function Addnewdoctor() {
             <input type="text"value={salary} onChange={(e)=>setSalary(e.target.value)}  placeholder='Enter Salary'/>
             <button type='submit'>Add doctor</button>
         </form>
+        <Home/>
     </div>
   )
 }
