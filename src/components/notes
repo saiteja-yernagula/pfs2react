@@ -25,6 +25,7 @@ life cycle methods
 state
 state is like a variable used to manage the dynamic nature of a 
 component or used to store the daata
+react rerenders whenever the state changes
 
 import useState from 'react'
 const [statename,setStatename]=useState(intial value)
@@ -36,3 +37,25 @@ setCount---function used to change the state value
 useState -
 it is a hook in functional component that is used to manage
 the state
+
+
+useEffect
+useEffect is a hook that is used to manage side effects
+like apicalls, settimeout,setinterval and localstorage
+
+import {useEffect} from 'react'
+
+//it will run whenever the state changes
+useEffect(()=>{
+    console.log('requestt')
+})
+
+//useEffect with empty dependence array
+useEffect(()=>{
+    console.log('requestt')
+},[])
+
+//useEffect with dependece array with state value
+useEffect(()=>{
+    console.log('requestt')
+},[val])

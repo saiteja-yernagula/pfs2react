@@ -4,28 +4,21 @@ import Section from './components/Section'
 import './components/styles.css'
 import Doctorcard from './components/Doctorcard'
 import Addnewdoctor from './components/Addnewdoctor'
-// import { useState } from 'react'
-
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 function App() {
-  // const [count,setCount]=useState(0);
-  // let count=0
-  // function inc(){
-  //   count++
-  //   console.log(count)
-  // }
-  //   function dnc(){
-  //   count--
-  //   console.log(count)
-
-  // }
-
+  const [count,setCount]=useState(0);
+  const [val,setVal]=useState(0)
+  useEffect(()=>{
+    console.log('request is senting')
+  },[val])
   return (
    <> 
    <br />
-   {/* {count}
+   {count}
+   <button onClick={()=>setVal(val+1)}>value increment</button>
    <button onClick={()=>setCount(count+1)}>increment</button>
-   <button onClick={()=>setCount(count-1)}>decrement</button> */}
    <Navbar/>
    <Section/>
 
