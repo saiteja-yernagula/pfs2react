@@ -1,8 +1,10 @@
 import React, { useState ,useEffect} from 'react'
 import Doctorcard from './Doctorcard';
 
-function Home() {
+function Home({newdoctor}) {
     const [doctors,setDoctors]=useState([])
+
+
     function fetchdata(){
          let data = [
       {
@@ -39,6 +41,13 @@ function Home() {
     useEffect(()=>{
      fetchdata()
     },[])
+
+      useEffect(()=>{
+      if(newdoctor){
+        setDoctors((prev)=>[...prev,newdoctor])
+      }
+
+    },[newdoctor])
 
   return (
     <div className='doctorcontainer'>

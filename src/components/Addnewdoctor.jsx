@@ -7,11 +7,13 @@ function Addnewdoctor() {
     const [gender,setGender]=useState('')
     const [specialization,setSpecialization]=useState('')
     const [salary,setSalary]=useState('')
+
+    const [newdoctor,setNewdoctor]=useState(null)
     function handleform(e){
         e.preventDefault()
-        let formdetails={name,age,gender,specialization,salary}
+        let formdetails={id:Date.now(),name,age,gender,specialization,salary}
+        setNewdoctor(formdetails)
         console.log(formdetails)
-        console.log('form is submitted')
     }
   return (
     <div>
@@ -29,7 +31,7 @@ function Addnewdoctor() {
             <input type="text"value={salary} onChange={(e)=>setSalary(e.target.value)}  placeholder='Enter Salary'/>
             <button type='submit'>Add doctor</button>
         </form>
-        <Home/>
+        <Home newdoctor={newdoctor}/>
     </div>
   )
 }
