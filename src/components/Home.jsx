@@ -1,12 +1,13 @@
-import React, { useState ,useEffect} from 'react'
-import Doctorcard from './Doctorcard';
+import React, { useState, useEffect } from "react";
+import Doctorcard from "./Doctorcard";
 
-function Home({newdoctor}) {
-    const [doctors,setDoctors]=useState([])
+function Home({ newdoctor }) {
+  const [doctors, setDoctors] = useState([]);
+  const [search, setSearch] = useState("");
+  const [specialization, setSpecialization] = useState("");
 
-
-    function fetchdata(){
-         let data = [
+  function fetchdata() {
+    let data = [
       {
         id: 1,
         name: "Teja",
@@ -33,30 +34,66 @@ function Home({newdoctor}) {
         specialization: "Heart",
         salary: 5000000,
       },
-      
     ];
-    setDoctors(data)
 
+    setDoctors(data);
+  }
+  useEffect(() => {
+    fetchdata();
+  }, []);
+
+  useEffect(() => {
+    if (newdoctor) {
+      setDoctors((prev) => [...prev, newdoctor]);
     }
-    useEffect(()=>{
-     fetchdata()
-    },[])
+  }, [newdoctor]);
 
-      useEffect(()=>{
-      if(newdoctor){
-        setDoctors((prev)=>[...prev,newdoctor])
-      }
-
-    },[newdoctor])
-
+  const filtereddoctors = doctors.filter((val) => {
+    return (
+      val.name.toLowerCase().includes(search.toLowerCase()) &&
+      (specialization == "" || val.specialization == specialization)
+    );
+  });
   return (
-    <div className='doctorcontainer'>
-        {doctors.map((doctor)=>{
-            return (<Doctorcard name={doctor.name} key={doctor.id}
-                 specialization={doctor.specialization} gender={doctor.gender}/>)
-        })}
-    </div>
-  )
+    <>
+      <div>
+        <input
+          type="text"
+          placeholder="search doctor name"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="text-field"
+        />
+        <select
+          name=""
+          value={specialization}
+          onChange={(e) => setSpecialization(e.target.value)}
+          className="text-field"
+        >
+          <option value="Bones">Bones</option>
+          <option value="Muscles">Muscles</option>
+          <option value="Heart">Heart</option>
+        </select>
+      </div>
+
+      <div className="doctorcontainer">
+        {filtereddoctors.length > 0 ? (
+          filtereddoctors.map((doctor) => {
+            return (
+              <Doctorcard
+                name={doctor.name}
+                key={doctor.id}
+                specialization={doctor.specialization}
+                gender={doctor.gender}
+              />
+            );
+          })
+        ) : (
+          <h2>no doctors found</h2>
+        )}
+      </div>
+    </>
+  );
 }
 
-export default Home
+export default Home;
