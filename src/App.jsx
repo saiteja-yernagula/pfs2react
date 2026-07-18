@@ -5,6 +5,7 @@ import './components/styles.css'
 import Doctorcard from './components/Doctorcard'
 import Addnewdoctor from './components/Addnewdoctor'
 import { Route, Routes } from 'react-router-dom'
+import Doctordetails from './components/Doctordetails'
 // import { useState } from 'react'
 // import { useEffect } from 'react'
 
@@ -24,6 +25,7 @@ function App() {
    <Routes>
     <Route path='/' element={<Section/>}/>
     <Route path='/adddoctor' element={<Addnewdoctor/>}/>
+    <Route path='/doctordetails/:id' element={<Doctordetails/>}/>
    </Routes>
    {/* <Section/> */}
 {/* 
