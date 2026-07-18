@@ -4,6 +4,7 @@ import Section from './components/Section'
 import './components/styles.css'
 import Doctorcard from './components/Doctorcard'
 import Addnewdoctor from './components/Addnewdoctor'
+import { Route, Routes } from 'react-router-dom'
 // import { useState } from 'react'
 // import { useEffect } from 'react'
 
@@ -20,8 +21,12 @@ function App() {
    <button onClick={()=>setVal(val+1)}>value increment</button>
    <button onClick={()=>setCount(count+1)}>increment</button> */}
    <Navbar/>
-   <Section/>
-
+   <Routes>
+    <Route path='/' element={<Section/>}/>
+    <Route path='/adddoctor' element={<Addnewdoctor/>}/>
+   </Routes>
+   {/* <Section/> */}
+{/* 
    <div className='doctorcontainer'>
    <Doctorcard name='Sivaram' specialization='ortho spl' gender='male'/>
    <Doctorcard name='Teja' specialization='Muscles spl' gender='male'/>
@@ -29,8 +34,8 @@ function App() {
    <Doctorcard name='Madhu' specialization='ortho spl' gender='male'/>
    <Doctorcard name='Aditya' specialization='skin spl' gender='male'/>
    <Doctorcard name='John' specialization='Lungs' gender='male'/>
-   </div>
-   <Addnewdoctor/>
+   </div> */}
+   {/* <Addnewdoctor/> */}
   </>
   )
 }
