@@ -59,3 +59,35 @@ useEffect(()=>{
 useEffect(()=>{
     console.log('requestt')
 },[val])
+
+
+api- application programming interface
+it forms the communication betweent the client and server
+
+
+// async function getdata(){
+//     let data =await fetch('apilink')
+//     let finaldaata=await data.json()
+// }
+// getdata()
+
+
+npm install axios
+
+import axios from 'axios'
+import {useState,useEffect} from 'react'
+
+function App(){
+    let [val,setVal]=useState(null)
+    async function fetchdata(){
+        let api=await axios.get('https://doc-back.onrender.com/doctors')
+        console.log(api.data)
+        setVal(api.data)
+    }
+    useEffect(()=>{
+     fetchdata()
+    },[])
+    return (
+
+    )
+}

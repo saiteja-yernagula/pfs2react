@@ -6,6 +6,7 @@ import Doctorcard from './components/Doctorcard'
 import Addnewdoctor from './components/Addnewdoctor'
 import { Route, Routes } from 'react-router-dom'
 import Doctordetails from './components/Doctordetails'
+import Weather from './components/Weather'
 // import { useState } from 'react'
 // import { useEffect } from 'react'
 
@@ -26,6 +27,7 @@ function App() {
     <Route path='/' element={<Section/>}/>
     <Route path='/adddoctor' element={<Addnewdoctor/>}/>
     <Route path='/doctordetails/:id' element={<Doctordetails/>}/>
+    <Route path='/weather' element={<Weather/>}/>
    </Routes>
    {/* <Section/> */}
 {/* 
