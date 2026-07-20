@@ -6,7 +6,7 @@ function Weather() {
     function handleform(e){
         e.preventDefault()
         console.log(city)
-    api='api.openweathermap.org/data/2.5/weather?q=egg&units=metric&appid=466ddaa21a8de191e9f608bd11a56acb'
+        api='https://api.openweathermap.org/data/2.5/weather?q=egg&units=metric&appid=466ddaa21a8de191e9f608bd11a56acb'
     }
   return (
     <div>
