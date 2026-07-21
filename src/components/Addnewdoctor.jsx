@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import Home from './Home'
+import axios from 'axios'
 function Addnewdoctor() {
     const [name,setName]=useState('')
     const [age,setAge]=useState('')
@@ -9,12 +10,35 @@ function Addnewdoctor() {
     const [salary,setSalary]=useState('')
 
     const [newdoctor,setNewdoctor]=useState(null)
-    function handleform(e){
+  async function handleform(e){
         e.preventDefault()
         let formdetails={id:Date.now(),name,age,gender,specialization,salary}
         setNewdoctor(formdetails)
+        axios.post('https://doc-back.onrender.com/doctors',formdetails)
+        alert('data posted to api ')
         console.log(formdetails)
     }
+
+async function deldata(id){
+    axios.delete(`https://doc-back.onrender.com/doctors/${id}`)
+    alert(id,'deleted successfullly')
+    setNewdoctor('deleted')
+}
+
+async function upddata(id){
+    let data={
+        name:'John',
+        salary:485485,
+        age:34,
+        id:Date.now(),
+        specialization:'Bones'
+    }
+    axios.put(`https://doc-back.onrender.com/doctors/${id}`,data)
+    alert(id+ "updated")
+    setNewdoctor('updated')
+}
+
+
   return (
     <div>
         <h1>Add New Doctor</h1>
@@ -31,7 +55,7 @@ function Addnewdoctor() {
             <input type="text"value={salary} onChange={(e)=>setSalary(e.target.value)}  placeholder='Enter Salary'/>
             <button type='submit'>Add doctor</button>
         </form>
-        <Home newdoctor={newdoctor}/>
+        <Home deldata={deldata} upddata={upddata} newdoctor={newdoctor}/>
     </div>
   )
 }

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Doctorcard from "./Doctorcard";
 import axios from "axios";
 
-function Home({ newdoctor }) {
+function Home({ newdoctor,deldata,upddata }) {
+
   const [doctors, setDoctors] = useState([]);
   const [search, setSearch] = useState("");
   const [specialization, setSpecialization] = useState("");
@@ -13,14 +14,10 @@ function Home({ newdoctor }) {
   
     setDoctors(api.data);
   }
-  useEffect(() => {
-    fetchdata();
-  }, []);
+
 
   useEffect(() => {
-    if (newdoctor) {
-      setDoctors((prev) => [...prev, newdoctor]);
-    }
+    fetchdata();
   }, [newdoctor]);
 
   const filtereddoctors = doctors.filter((val) => {
@@ -56,6 +53,8 @@ function Home({ newdoctor }) {
           filtereddoctors.map((doctor) => {
             return (
               <Doctorcard
+              deldata={deldata}
+              upddata={upddata}
                 name={doctor.name}
                 key={doctor.id}
                 specialization={doctor.specialization}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Doctorcard({name,specialization,gender,id}) {
+function Doctorcard({name,specialization,gender,id,deldata,upddata}) {
   const navigate=useNavigate()
   return (
     <div className='card'>
@@ -9,7 +9,10 @@ function Doctorcard({name,specialization,gender,id}) {
         <h2>{name}</h2>
         <p>{specialization}</p>
         <p>{gender}</p>
+
         <button onClick={()=>navigate(`/doctordetails/${id}`)} >view details</button>
+        <button onClick={()=>deldata(id)}>Delete</button>
+        <button onClick={()=>upddata(id)}>Update</button>
     </div>
   )
 }
