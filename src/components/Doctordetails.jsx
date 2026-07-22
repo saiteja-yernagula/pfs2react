@@ -6,10 +6,14 @@ function Doctordetails() {
   const [doctor, setDoctor] = useState();
   // it is used to get the dynamic data from url\
   async function fetchdata() {
-  
+  try{
     let api=await axios.get('https://doc-back.onrender.com/doctors')
     let doctor = api.data.find((val) => val.id == id);
     setDoctor(doctor);
+  }catch(err){
+    console.log(err)
+  }
+
   }
 
   useEffect(() => {

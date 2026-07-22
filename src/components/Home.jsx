@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Doctorcard from "./Doctorcard";
 import axios from "axios";
 
@@ -9,10 +9,12 @@ function Home({ newdoctor,deldata,upddata }) {
   const [specialization, setSpecialization] = useState("");
 
   async function fetchdata() {
-    
-        let api=await axios.get('https://doc-back.onrender.com/doctors')
-  
+    try{
+      let api=await axios.get('https://doc-back.onrender.com/doctors')
     setDoctors(api.data);
+    }catch(err){
+      console.log(err)
+    }
   }
 
 
@@ -20,12 +22,15 @@ function Home({ newdoctor,deldata,upddata }) {
     fetchdata();
   }, [newdoctor]);
 
-  const filtereddoctors = doctors.filter((val) => {
+  const filtereddoctors = useMemo(()=>{
+    return doctors.filter((val) => {
+    console.log('running')
     return (
       val.name.toLowerCase().includes(search.toLowerCase()) &&
       (specialization == "" || val.specialization == specialization)
     );
   });
+  },[specialization,doctors,search])
   return (
     <>
       <div>

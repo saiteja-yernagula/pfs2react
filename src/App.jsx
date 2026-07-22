@@ -11,6 +11,7 @@ import Weather from './components/Weather'
 
 import { useState } from 'react'
 import Protectedroute from './components/Protectedroute'
+import useCounter from './components/useCounter'
 function App() {
   // const [count,setCount]=useState(0);
   // const [val,setVal]=useState(0)
@@ -18,8 +19,12 @@ function App() {
   //   console.log('request is senting')
   // },[val])
   const [login,setLogin]=useState(false)
+  const {count,increment,decrement}=useCounter()
   return (
    <> 
+   {count}
+   <button onClick={increment}>inc</button>
+   <button onClick={decrement}>dnc</button>
    {/* <br />
    {count}
    <button onClick={()=>setCount(count+1)}>increment</button> */}
