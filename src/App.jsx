@@ -7,25 +7,28 @@ import Addnewdoctor from './components/Addnewdoctor'
 import { Route, Routes } from 'react-router-dom'
 import Doctordetails from './components/Doctordetails'
 import Weather from './components/Weather'
-// import { useState } from 'react'
 // import { useEffect } from 'react'
 
+import { useState } from 'react'
+import Protectedroute from './components/Protectedroute'
 function App() {
   // const [count,setCount]=useState(0);
   // const [val,setVal]=useState(0)
   // useEffect(()=>{
   //   console.log('request is senting')
   // },[val])
+  const [login,setLogin]=useState(false)
   return (
    <> 
    {/* <br />
    {count}
-   <button onClick={()=>setVal(val+1)}>value increment</button>
    <button onClick={()=>setCount(count+1)}>increment</button> */}
+   <button onClick={()=>setLogin(true)}>login through this buutton</button>
    <Navbar/>
    <Routes>
     <Route path='/' element={<Section/>}/>
-    <Route path='/adddoctor' element={<Addnewdoctor/>}/>
+    <Route path='/adddoctor' 
+    element={<Protectedroute login={login}><Addnewdoctor/></Protectedroute> }/>
     <Route path='/doctordetails/:id' element={<Doctordetails/>}/>
     <Route path='/weather' element={<Weather/>}/>
    </Routes>
