@@ -91,3 +91,7 @@ function App(){
 
     )
 }
+
+
+useContext
+it is used to manage state in global level

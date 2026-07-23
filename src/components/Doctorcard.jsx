@@ -1,7 +1,9 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-
-function Doctorcard({name,specialization,gender,id,deldata,upddata}) {
+import { DoctorContext } from "./Doctorprovider";
+import { useContext } from "react";
+function Doctorcard({name,specialization,gender,id}) {
+  const {deldata,upddata}=useContext(DoctorContext)
   const navigate=useNavigate()
   return (
     <div className='card'>

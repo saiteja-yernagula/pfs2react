@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Doctorcard from "./Doctorcard";
 import axios from "axios";
+import { DoctorContext } from "./Doctorprovider";
+import { useContext } from "react";
 
-function Home({ newdoctor,deldata,upddata }) {
+function Home() {
+  const {newdoctor}=useContext(DoctorContext)
 
   const [doctors, setDoctors] = useState([]);
   const [search, setSearch] = useState("");
@@ -58,8 +61,8 @@ function Home({ newdoctor,deldata,upddata }) {
           filtereddoctors.map((doctor) => {
             return (
               <Doctorcard
-              deldata={deldata}
-              upddata={upddata}
+              // deldata={deldata}
+              // upddata={upddata}
                 name={doctor.name}
                 key={doctor.id}
                 specialization={doctor.specialization}

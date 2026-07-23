@@ -12,8 +12,9 @@ import Weather from './components/Weather'
 import { useState } from 'react'
 import Protectedroute from './components/Protectedroute'
 import useCounter from './components/useCounter'
+import Doctorprovider from './components/Doctorprovider'
 function App() {
-  // const [count,setCount]=useState(0);
+  // 'const [count,setCount]=useState(0);
   // const [val,setVal]=useState(0)
   // useEffect(()=>{
   //   console.log('request is senting')
@@ -33,7 +34,7 @@ function App() {
    <Routes>
     <Route path='/' element={<Section/>}/>
     <Route path='/adddoctor' 
-    element={<Protectedroute login={login}><Addnewdoctor/></Protectedroute> }/>
+    element={<Protectedroute login={login}><Doctorprovider><Addnewdoctor/></Doctorprovider></Protectedroute> }/>
     <Route path='/doctordetails/:id' element={<Doctordetails/>}/>
     <Route path='/weather' element={<Weather/>}/>
    </Routes>
